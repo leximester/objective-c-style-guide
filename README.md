@@ -288,15 +288,15 @@ Property attributes should be explicitly listed, and will help new programmers w
 **Preferred:**
 
 ```objc
-@property (weak, nonatomic) IBOutlet UIView *containerView;
-@property (strong, nonatomic) NSString *tutorialName;
+@property (nonatomic, weak) IBOutlet UIView *containerView;
+@property (nonatomic) NSString *tutorialName;
 ```
 
 **Not Preferred:**
 
 ```objc
-@property (nonatomic, weak) IBOutlet UIView *containerView;
-@property (nonatomic) NSString *tutorialName;
+@property (weak, nonatomic) IBOutlet UIView *containerView;
+@property (strong, nonatomic) NSString *tutorialName;
 ```
 
 Properties with mutable counterparts (e.g. NSString) should prefer `copy` instead of `strong`. 
@@ -305,13 +305,14 @@ Why? Even if you declared a property as `NSString` somebody might pass in an ins
 **Preferred:**
 
 ```objc
-@property (copy, nonatomic) NSString *tutorialName;
+@property (strong, nonatomic) NSString *tutorialName;
 ```
 
 **Not Preferred:**
 
 ```objc
-@property (strong, nonatomic) NSString *tutorialName;
+@property (copy, nonatomic) NSString *tutorialName;
+
 ```
 
 ## Dot-Notation Syntax
